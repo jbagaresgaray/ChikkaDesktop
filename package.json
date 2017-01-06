@@ -23,12 +23,12 @@
     "dist": "npm run compile && build",
     "build-mac": "electron-packager ./app Chikka --platform=darwin --arch=x64 --build-version=1.0.0 --version=1.4.12 --asar=true --out=dist --overwrite=true --icon=./build/icon.icns --ignore=dist",
     "build-win": "electron-packager ./app Chikka --platform=win32 --arch=ia32 --build-version=1.0.0 --version=1.4.12 --asar=true --out=dist --overwrite=true --icon=./build/icon.ico --ignore=dist",
-    "dist-mac": "electron-installer-dmg ./dist/Chikka-darwin-x64/Chikka.app Chikka --out=dist --icon=./build/icon.icns --background=./build/icon.png --overwrite=true"
+    "dist-mac": "electron-installer-dmg ./dist/Chikka-darwin-x64/Chikka.app Chikka --out=dist --icon=./build/icon.icns --background=./build/bg.png --overwrite=true"
   },
   "build": {
-    "appId": "com.4loop.ph.jira-client-app",
+    "appId": "com.designr.net.chikkamessenger",
     "category": "public.app-category.social",
-    "productName": "4LOOP JIRA",
+    "productName": "Chikka Messenger",
     "dmg": {
       "contents": [
         {
