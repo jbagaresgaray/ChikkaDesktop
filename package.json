@@ -1,0 +1,82 @@
+{
+  "name": "Chikka",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jbagaresgaray/ChikkaDesktop.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jbagaresgaray/ChikkaDesktop/issues"
+  },
+  "homepage": "https://github.com/jbagaresgaray/ChikkaDesktop#readme",
+  "private": true,
+  "scripts": {
+    "postinstall": "install-app-deps",
+    "start": "npm install && npm run compile && electron ./app",
+    "test": "mocha",
+    "compile": "rimraf app/out",
+    "pack": "npm run compile && build --dir",
+    "dist": "npm run compile && build",
+    "build-mac": "electron-packager ./app Chikka --platform=darwin --arch=x64 --build-version=1.0.0 --version=1.4.12 --asar=true --out=dist --overwrite=true --icon=./build/icon.icns --ignore=dist",
+    "build-win": "electron-packager ./app Chikka --platform=win32 --arch=ia32 --build-version=1.0.0 --version=1.4.12 --asar=true --out=dist --overwrite=true --icon=./build/icon.ico --ignore=dist",
+    "dist-mac": "electron-installer-dmg ./dist/Chikka-darwin-x64/Chikka.app Chikka --out=dist --icon=./build/icon.icns --background=./build/icon.png --overwrite=true"
+  },
+  "build": {
+    "appId": "com.4loop.ph.jira-client-app",
+    "category": "public.app-category.social",
+    "productName": "4LOOP JIRA",
+    "dmg": {
+      "contents": [
+        {
+          "x": 410,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 130,
+          "y": 150,
+          "type": "file"
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        "squirrel",
+        "zip"
+      ],
+      "remoteReleases": "https://github.com/jbagaresgaray/ChikkaDesktop",
+      "msi": true
+    }
+  },
+  "packageIgnore": [
+    "LICENSE.md",
+    "README.md",
+    ".DS_Store",
+    ".travis.yml",
+    "appveyor.yml",
+    "tests",
+    "dist",
+    "build/1.png",
+    "build/2.png",
+    "build/3.png"
+  ],
+  "dependencies": {
+    "electron-config": "^0.2.1",
+    "electron-dl": "^1.5.0",
+    "electron-is-dev": "^0.1.2"
+  },
+  "devDependencies": {
+    "electron": "^1.4.12",
+    "electron-builder": "^7.3.0",
+    "electron-installer-dmg": "^0.1.2",
+    "electron-installer-windows": "^0.2.0",
+    "electron-packager": "^8.4.0",
+    "rimraf": "^2.5.4",
+    "spectron": "^3.4.0"
+  }
+}
